@@ -4,12 +4,14 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
 import com.teste.sistemainfoteste.entidades.Usuario;
 import com.teste.sistemainfoteste.repositorios.UsuarioRepositorio;
 
 @Controller
+@Profile("test")
 public class InstanciaDados implements CommandLineRunner {
 
 	@Autowired

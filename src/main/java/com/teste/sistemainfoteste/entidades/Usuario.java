@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_nome")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,17 +19,23 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String nome;
+	private String usuarioLogin;
 
-	private String senha;
+	private String senhaLogin;
+
+	private String cpf;
+
+	private String endereco;
+
+	private String telefone;
 
 	public Usuario() {
 	}
 
-	public Usuario(Long id, String nome, String senha) {
+	public Usuario(Long id, String usuarioLogin, String senhaLogin) {
 		this.id = id;
-		this.nome = nome;
-		this.senha = senha;
+		this.usuarioLogin = usuarioLogin;
+		this.senhaLogin = senhaLogin;
 	}
 
 	public Long getId() {
@@ -40,20 +46,44 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getUsuarioLogin() {
+		return usuarioLogin;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setUsuarioLogin(String usuarioLogin) {
+		this.usuarioLogin = usuarioLogin;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getSenhaLogin() {
+		return senhaLogin;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenhaLogin(String senhaLogin) {
+		this.senhaLogin = senhaLogin;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override
