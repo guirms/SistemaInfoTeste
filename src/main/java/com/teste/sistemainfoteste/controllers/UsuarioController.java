@@ -50,13 +50,20 @@ public class UsuarioController {
 		}
 
 	}
+	
+//	@GetMapping("/login")
+//	public String login() {
+//		return "login";
+//	}
+	
+	
 
-	@GetMapping("/telaPrincipal")
+	@GetMapping("/cadastroUsuario")
 	public String eventoForm() {
-		return "telaPrincipal";
+		return "cadastroUsuario";
 	}
 
-	@RequestMapping(value = "/telaPrincipal", method = RequestMethod.POST)
+	@RequestMapping(value = "/cadastroUsuario", method = RequestMethod.POST)
 	public String eventoForm(Usuario usuario, RedirectAttributes attributes) {
 		if (usuario.getNome().equals("") && (usuario.getCpf().equals("") || verificarCpf(usuario))) {
 			attributes.addFlashAttribute("flashMessage", "Verifique os campos 'nome' e 'cpf'!");
@@ -75,7 +82,7 @@ public class UsuarioController {
 			attributes.addFlashAttribute("flashMessage", "Pessoa cadastrada com sucesso, código: " + usuario.codigo());
 			attributes.addFlashAttribute("flashType", "success");
 		}
-		return "redirect:/telaPrincipal";
+		return "redirect:/cadastroUsuario";
 	}
 
 	private boolean verificarCpf(Usuario usuario) {
