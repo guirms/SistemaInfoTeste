@@ -51,13 +51,11 @@ public class UsuarioController {
 
 	}
 	
-//	@GetMapping("/login")
-//	public String login() {
-//		return "login";
-//	}
+	@GetMapping("/telaPrincipal")
+	public String telaPrincipal() {
+		return "telaPrincipal";
+	}
 	
-	
-
 	@GetMapping("/cadastroUsuario")
 	public String eventoForm() {
 		return "cadastroUsuario";
@@ -81,6 +79,7 @@ public class UsuarioController {
 			usuarioServico.atualizar(1L, usuario);
 			attributes.addFlashAttribute("flashMessage", "Pessoa cadastrada com sucesso, código: " + usuario.codigo());
 			attributes.addFlashAttribute("flashType", "success");
+			return "redirect:/telaPrincipal";
 		}
 		return "redirect:/cadastroUsuario";
 	}

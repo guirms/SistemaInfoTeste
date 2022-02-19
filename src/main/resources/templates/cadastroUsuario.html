@@ -26,48 +26,57 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="/login" class="waves-effect waves-light btn"><i
 								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
-					<li><a href="/login" class="waves-effect waves-light btn"><i
-								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
+					<li><a href="/telaPrincipal" class="waves-effect waves-light btn"><i
+								class="material-icons left">format_list_bulleted</i>Tela principal</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 
-	<div class="container formEvento">
+	<div class="container formUsuario">
 
 		<form class="container" method="POST">
-		<div th:if="${flashMessage != null}">
-		<h5><font face="Bahnschrift" color="RED"><div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})"></font></div<v/h5>
-		</div>
-			<b>Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo" />
-			<div class="input-field col s6">
-				CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf"
-					placeholder="Seu Cadastro de pessoa física" />
+			<div th:if="${flashMessage != null}">
+				<h5>
+					<font face="Bahnschrift" color="RED">
+						<div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})">
+					</font>
 			</div>
-			<div class="input-field col s3">
-				Endereço: <input type="text" value="" name="endereco" placeholder="Seu endereço" />
-			</div>
-			<div class="input-field col s3">
-				Telefone <input type="text" value="" name="telefone" placeholder="Seu melhor telefone" />
-			</div></b>
-			
+			</h5>
+			<b>
+				<div class="input-field col s6">
+					Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo" />
+				</div>
+				<div class="input-field col s6">
+					CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf"
+						placeholder="Seu Cadastro de pessoa física" />
+				</div>
+				<div class="input-field col s3">
+					Endereço: <input type="text" value="" name="endereco" placeholder="Seu endereço" />
+				</div>
+				<div class="input-field col s3">
+					Telefone <input type="text" value="" name="telefone" placeholder="Seu melhor telefone" />
+				</div>
+			</b></h5>
+
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 
 		</form>
+	</div>
 
-		</form>
+	</form>
 
 
-		<!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="materialize/js/materialize.min.js">
-			const cpf = document.querySelector("#cpf");
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js">
+		const cpf = document.querySelector("#cpf");
 
-			cpf.addEventListener("keyup", () => {
-				let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+		cpf.addEventListener("keyup", () => {
+			let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
 
-				cpf.value = value;
-			});
-		</script>
+			cpf.value = value;
+		});
+	</script>
 
 </body>
 

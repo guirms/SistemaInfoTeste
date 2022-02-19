@@ -18,28 +18,30 @@
 	<link rel="stylesheet" href="style/styleCSS.css" />
 </head>
 
-<header>
+<body>
+	<header>
 		<nav>
 			<div class="nav-wrapper">
-				<font face="ITC Avant Garde Gothic"><a href="!" class="brand-logo center">Login</font></a>
-				<i class="material-icons left">copyright</i>Sitema Info
+				<font face="ITC Avant Garde Gothic"><a href="!" class="brand-logo center">Tela principal</font></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/login" class="waves-effect waves-light btn"><i
+								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
+					<li><a href="/cadastroUsuario" class="waves-effect waves-light btn"><i
+								class="material-icons left">format_list_bulleted</i>Cadastrar usuário</a></li>
+				</ul>
 			</div>
 		</nav>
 	</header>
-	
-  <form class="container login" method="POST">
+	<div class="container mensagemSucesso">
+		<div th:if="${flashMessage != null}">
+				<h5>
+					<font face="Bahnschrift" color="GREEN" style="background-color:GREEN">
+						<div th:replace="MensagemSucesso :: alert (type=${flashType}, message=${flashMessage})">
+					</font>
+			</div>
 			</h5>
-			<b>
-				<div class="input-field col s6">
-					Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo" />
-				</div>
-				<div class="input-field col s6">
-					CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf"
-						placeholder="Seu Cadastro de pessoa física" />
-				</div>
-			</b></h5>
+	</div>
 
-			<button class="waves-effect waves-light btn" type="submit">Entrar</button>
-		</form> 
 </body>
+
 </html>
