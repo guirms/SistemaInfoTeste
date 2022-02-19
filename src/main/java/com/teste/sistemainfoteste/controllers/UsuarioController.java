@@ -58,21 +58,40 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/telaPrincipal", method = RequestMethod.POST)
 	public String eventoForm(Usuario usuario, RedirectAttributes attributes) {
-		if (usuario.getNome().equals("") && usuario.getCpf().equals("")) {
+		if (usuario.getNome().equals("") && (usuario.getCpf().equals("") || verificarCpf(usuario))) {
 			attributes.addFlashAttribute("flashMessage", "Verifique os campos 'nome' e 'cpf'!");
 			attributes.addFlashAttribute("flashType", "danger");
-		}
-		else if (usuario.getNome().equals("")) {
+		} else if (usuario.getNome().equals("")) {
 			attributes.addFlashAttribute("flashMessage", "Verifique o campo 'nome'!");
-			attributes.addFlashAttribute("flashType", "danger");}
-		else if (usuario.getCpf().equals("")) {
+			attributes.addFlashAttribute("flashType", "danger");
+		} else if (usuario.getCpf().equals("") || verificarCpf(usuario)) {
+			attributes.addFlashAttribute("flashMessage", "Verifique o campo 'cpf'!");
+			attributes.addFlashAttribute("flashType", "danger");
+		} else if (verificarCpf(usuario)) {
 			attributes.addFlashAttribute("flashMessage", "Verifique o campo 'cpf'!");
 			attributes.addFlashAttribute("flashType", "danger");
 		} else {
 			usuarioServico.atualizar(1L, usuario);
-			attributes.addFlashAttribute("flashMessage", "Usuário adicionado com sucesso!");
+			attributes.addFlashAttribute("flashMessage", "Pessoa cadastrada com sucesso, código: " + usuario.codigo());
 			attributes.addFlashAttribute("flashType", "success");
 		}
 		return "redirect:/telaPrincipal";
+	}
+
+	private boolean verificarCpf(Usuario usuario) {
+		int contador = 0;
+
+		for (int i = 0; i < usuario.getCpf().length(); i++) {
+			if (Character.isDigit(usuario.getCpf().charAt(i))) {
+				contador += 1;
+			}
+		}
+
+		if (contador != 11) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

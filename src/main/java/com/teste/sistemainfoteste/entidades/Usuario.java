@@ -121,5 +121,19 @@ public class Usuario implements Serializable {
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
+	
+	public String codigo() {
+		String[] vetor = new String[4];
+		int contador = 0;
+		
+		for (int i = 0; contador < 4; i++) {
+			if (Character.isDigit(cpf.charAt(i))) {
+				vetor[contador] = String.valueOf(cpf.charAt(i));
+				contador += 1;
+			}
+		}
+		
+		return vetor[0] + vetor[1] + vetor[2] + vetor[3];
+	}
 
 }
