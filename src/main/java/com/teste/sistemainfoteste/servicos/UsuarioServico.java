@@ -18,6 +18,10 @@ public class UsuarioServico {
 		Optional<Usuario> usuario = usuarioRepo.findById(id);
 		return usuario.get();
 	}
+	
+	public Usuario inserir(Usuario usuario) {
+		return usuarioRepo.save(usuario);
+	}
 
 	public Usuario atualizar(Long id, Usuario usuario) {
 			Usuario obj = pegarPorId(id);

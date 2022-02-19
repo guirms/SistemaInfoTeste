@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
-import com.teste.sistemainfoteste.entidades.Evento;
 import com.teste.sistemainfoteste.entidades.Usuario;
 import com.teste.sistemainfoteste.repositorios.UsuarioRepositorio;
 
@@ -17,7 +16,6 @@ public class InstanciaDados implements CommandLineRunner {
 
 	@Autowired
 	UsuarioRepositorio usuarioRepo;
-	
 	
 	@Override
 	public void run(String... args) throws Exception {
