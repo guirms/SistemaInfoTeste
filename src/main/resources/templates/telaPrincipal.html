@@ -3,7 +3,7 @@
 <html lang="pt-br">
 
 <head>
-	<title>EventosApp</title>
+	<title>Tela principal</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper">
-				<font face="ITC Avant Garde Gothic"><a href="!" class="brand-logo center">Tela principal</font></a>
+				<font face="ITC Avant Garde Gothic"><a class="brand-logo center">Tela principal</font></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="/login" class="waves-effect waves-light btn"><i
 								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
@@ -32,15 +32,17 @@
 			</div>
 		</nav>
 	</header>
-	<div class="container mensagemSucesso">
-		<div th:if="${flashMessage != null}">
-				<h5>
-					<font face="Bahnschrift" color="GREEN" style="background-color:GREEN">
-						<div th:replace="MensagemSucesso :: alert (type=${flashType}, message=${flashMessage})">
-					</font>
+
+	<div th:if="${flashMessage != null}">
+		<h6>
+			<div class="container mensagemSucesso" style="background-color: #7FFFD4">
+				<font face="Bahnschrift" color="GREEN" style="background-color:GREEN">
+					<div th:replace="MensagemSucesso :: alert (type=${flashType}, message=${flashMessage})"></div>
+				</font>
 			</div>
-			</h5>
+		</h6>
 	</div>
+
 
 </body>
 

@@ -29,6 +29,8 @@ public class Usuario implements Serializable {
 
 	private String telefone;
 
+	private String codigo;
+
 	public Usuario() {
 	}
 
@@ -39,7 +41,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(Long id, String usuarioLogin, String senhaLogin, String nome, String cpf, String endereco,
-			String telefone) {
+			String telefone, String codigo) {
 		this.id = id;
 		this.usuarioLogin = usuarioLogin;
 		this.senhaLogin = senhaLogin;
@@ -47,6 +49,7 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.telefone = telefone;
+		this.codigo = codigo;
 	}
 
 	public Long getId() {
@@ -105,6 +108,38 @@ public class Usuario implements Serializable {
 		this.telefone = telefone;
 	}
 
+	public String gerarCodigo() {
+		String[] vetor = new String[4];
+		int contador = 0;
+
+		for (int i = 0; contador < 4; i++) {
+			if (Character.isDigit(cpf.charAt(i))) {
+				vetor[contador] = String.valueOf(cpf.charAt(i));
+				contador += 1;
+			}
+		}
+
+		this.codigo = vetor[0];
+		contador = 0;
+
+		for (String dados : vetor) {
+			if (contador > 0) {
+				this.codigo += dados;
+			}
+			contador += 1;
+		}
+
+		return codigo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -120,20 +155,6 @@ public class Usuario implements Serializable {
 			return false;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
-	}
-	
-	public String codigo() {
-		String[] vetor = new String[4];
-		int contador = 0;
-		
-		for (int i = 0; contador < 4; i++) {
-			if (Character.isDigit(cpf.charAt(i))) {
-				vetor[contador] = String.valueOf(cpf.charAt(i));
-				contador += 1;
-			}
-		}
-		
-		return vetor[0] + vetor[1] + vetor[2] + vetor[3];
 	}
 
 }

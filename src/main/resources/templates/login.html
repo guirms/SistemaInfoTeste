@@ -3,7 +3,7 @@
 <html lang="pt-br">
 
 <head>
-	<title>EventosApp</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,27 +19,35 @@
 </head>
 
 <header>
-		<nav>
-			<div class="nav-wrapper">
-				<font face="ITC Avant Garde Gothic"><a href="!" class="brand-logo center">Login</font></a>
-				<i class="material-icons left">copyright</i>Sitema Info
-			</div>
-		</nav>
-	</header>
-	
-  <form class="container login" method="POST">
-			</h5>
-			<b>
-				<div class="input-field col s6">
-					Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo" />
-				</div>
-				<div class="input-field col s6">
-					CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf"
-						placeholder="Seu Cadastro de pessoa física" />
-				</div>
-			</b></h5>
+	<nav>
+		<div class="nav-wrapper">
+			<font face="ITC Avant Garde Gothic"><class="brand-logo center">Login</font></a>
+			<i class="material-icons left">copyright</i>Sitema Info
+		</div>
+	</nav>
+</header>
 
-			<button class="waves-effect waves-light btn" type="submit">Entrar</button>
-		</form> 
+<form class="container login" method="POST">
+
+	<div th:if="${flashMessage != null}">
+		<h6>
+			<font face="Bahnschrift" color="RED">
+				<div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})"></div>
+			</font>
+		</h6>
+	</div>
+
+	<b>
+		<div class="input-field col s6">
+			Usuário: <input type="text" value="" name="usuarioLogin" placeholder="ex. usuario123" />
+		</div>
+		<div class="input-field col s6">
+			Senha:<input type="password" value="" name="senhaLogin" placeholder="ex. minhasenha123" />
+		</div>
+	</b>
+
+	<button class="waves-effect waves-light btn" type="submit">Entrar</button>
+</form>
 </body>
+
 </html>

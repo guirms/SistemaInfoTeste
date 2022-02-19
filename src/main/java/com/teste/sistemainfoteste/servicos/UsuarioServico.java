@@ -32,6 +32,7 @@ public class UsuarioServico {
 	private void atualizarDados(Usuario obj, Usuario usuario) {
 		obj.setNome(usuario.getNome());
 		obj.setCpf(usuario.getCpf());
+		obj.setCodigo(usuario.gerarCodigo());
 		obj.setEndereco(usuario.getEndereco());
 		obj.setTelefone(usuario.getTelefone());
 	}

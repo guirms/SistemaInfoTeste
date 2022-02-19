@@ -3,7 +3,7 @@
 <html lang="pt-br">
 
 <head>
-	<title>EventosApp</title>
+	<title>Cadastro de usuário</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper">
-				<font face="ITC Avant Garde Gothic"><a href="!" class="brand-logo center">Cadastro de usuário</font></a>
+				<font face="ITC Avant Garde Gothic"><a class="brand-logo center">Cadastro de usuário</font></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="/login" class="waves-effect waves-light btn"><i
 								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
@@ -37,18 +37,18 @@
 
 		<form class="container" method="POST">
 			<div th:if="${flashMessage != null}">
-				<h5>
+				<h6>
 					<font face="Bahnschrift" color="RED">
-						<div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})">
+						<div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})"></div>
 					</font>
+				</h6>
 			</div>
-			</h5>
 			<b>
 				<div class="input-field col s6">
 					Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo" />
 				</div>
 				<div class="input-field col s6">
-					CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf"
+					CPF (Obrigatório):<input type="text" value="" name="cpf"
 						placeholder="Seu Cadastro de pessoa física" />
 				</div>
 				<div class="input-field col s3">
@@ -69,13 +69,6 @@
 
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js">
-		const cpf = document.querySelector("#cpf");
-
-		cpf.addEventListener("keyup", () => {
-			let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
-
-			cpf.value = value;
-		});
 	</script>
 
 </body>
