@@ -1,4 +1,71 @@
 <!DOCTYPE html>
-<h1>TESTE</h1>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="pt-br">
+
+<head>
+	<title>EventosApp</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="style/styleCSS.css" />
+</head>
+
+<body>
+	<header color=>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Cadastro de usuário</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/login" class="waves-effect waves-light btn"><i
+								class="material-icons left">format_list_bulleted</i>Tela de login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<div th:if="${flashMessage != null}">
+		<div th:replace="MensagemValidacao :: alert (type=${flashType}, message=${flashMessage})"></div>
+	</div>
+
+	<div class="container formEvento">
+
+		<form class="container" method="POST">
+			Nome(Obrigatório): <input type="text" value="" name="nome" placeholder="Seu nome completo"/>
+			<div class="input-field col s6">
+				CPF (Obrigatório):<input type="text" value="" id="cpf" name="cpf" placeholder="Seu Cadastro de pessoa física"/>
+			</div>
+			<div class="input-field col s3">
+				Endereço: <input type="text" value="" name="endereco" placeholder="Seu endereço"/>
+			</div>
+			<div class="input-field col s3">
+				Telefone <input type="text" value="" name="telefone" placeholder="Seu melhor telefone"/>
+			</div>
+			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+
+		</form>
+
+	</form>
+
+
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="materialize/js/materialize.min.js">
+			const cpf = document.querySelector("#cpf");
+
+			cpf.addEventListener("keyup", () => {
+				let value = cpf.value.replace(/[^0-9]/g, "").replace(/^([\d]{3})([\d]{3})?([\d]{3})?([\d]{2})?/, "$1.$2.$3-$4");
+
+				cpf.value = value;
+			});
+		</script>
+
+</body>
 
 </html>

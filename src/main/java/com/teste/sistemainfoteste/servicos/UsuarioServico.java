@@ -13,10 +13,23 @@ public class UsuarioServico {
 
 	@Autowired
 	UsuarioRepositorio usuarioRepo;
-	
+
 	public Usuario pegarPorId(Long id) {
 		Optional<Usuario> usuario = usuarioRepo.findById(id);
 		return usuario.get();
-	}	
-	
+	}
+
+	public Usuario atualizar(Long id, Usuario usuario) {
+			Usuario obj = pegarPorId(id);
+			atualizarDados(obj, usuario);
+			return usuarioRepo.save(obj);
+	}
+
+	private void atualizarDados(Usuario obj, Usuario usuario) {
+		obj.setNome(usuario.getNome());
+		obj.setCpf(usuario.getCpf());
+		obj.setEndereco(usuario.getEndereco());
+		obj.setTelefone(usuario.getTelefone());
+	}
+
 }
