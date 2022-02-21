@@ -8,6 +8,7 @@ Linguagem Utilizada: Java ☕
 Recursos utilizados:
 - SpringBoot.
 - Maven.
+- Lombok
 - JPA e Hibernate.
 - Test profile.
 - H2 database.
